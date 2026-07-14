@@ -11,8 +11,9 @@ public class ProjetoLivro {
         l[0] = new Livro("Aprendendo Java", "Gustavo Guanabara", 300, p[0]);
         l[1] = new Livro("Aprendendo POO", "Gustavo Guanabara", 500, p[1]);
 
+        l[0].abrir();
+        l[0].folhear(200);
+
         System.out.println(l[0].detalhes());
-        System.out.println();
-        System.out.println(l[1].detalhes());
     }
 }
