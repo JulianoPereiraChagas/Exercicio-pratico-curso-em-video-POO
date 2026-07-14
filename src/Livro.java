@@ -45,7 +45,11 @@ public class Livro implements Publicacao {
     }
 
     public void setPagAtual(int pagAtual) {
-        this.pagAtual = pagAtual;
+        if (pagAtual >= 0 && pagAtual <= this.totPaginas) {
+            this.pagAtual = pagAtual;
+        } else {
+            System.out.println("Página inválida.");
+        }
     }
 
     public boolean isAberto() {
@@ -67,41 +71,62 @@ public class Livro implements Publicacao {
     @Override
     public void abrir() {
         this.aberto = true;
+        System.out.println("Livro aberto.");
     }
 
     @Override
     public void fechar() {
         this.aberto = false;
+        System.out.println("Livro fechado.");
     }
 
     @Override
     public void folhear(int p) {
-        if (p > this.totPaginas) {
-            this.pagAtual = 0;
-        } else if (p < 0) {
-            this.pagAtual = 0;
+        if (!this.aberto) {
+            System.out.println("Abra o livro antes de folhear.");
+            return;
+        }
+
+        if (p < 0 || p > this.totPaginas) {
+            System.out.println("Página inválida! O livro possui " + this.totPaginas + " páginas.");
         } else {
             this.pagAtual = p;
+            System.out.println("Você foi para a página " + this.pagAtual + ".");
         }
     }
 
     @Override
     public void avancarPag() {
-        if (this.aberto && this.pagAtual < this.totPaginas) {
+        if (!this.aberto) {
+            System.out.println("O livro está fechado.");
+            return;
+        }
+
+        if (this.pagAtual < this.totPaginas) {
             this.pagAtual++;
+            System.out.println("Página atual: " + this.pagAtual);
+        } else {
+            System.out.println("Você já está na última página.");
         }
     }
 
     @Override
     public void voltarPag() {
-        if (this.aberto && this.pagAtual > 0) {
+        if (!this.aberto) {
+            System.out.println("O livro está fechado.");
+            return;
+        }
+
+        if (this.pagAtual > 0) {
             this.pagAtual--;
+            System.out.println("Página atual: " + this.pagAtual);
+        } else {
+            System.out.println("Você já está na primeira página.");
         }
     }
 
     @Override
     public String detalhes() {
-        System.out.println("------------------------------");
         return "Título: " + this.titulo +
                 "\nAutor: " + this.autor +
                 "\nTotal de páginas: " + this.totPaginas +

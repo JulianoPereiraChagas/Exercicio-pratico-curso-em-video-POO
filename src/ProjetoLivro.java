@@ -12,11 +12,9 @@ public class ProjetoLivro {
         l[1] = new Livro("Aprendendo POO", "Gustavo Guanabara", 500, p[1]);
 
         l[0].abrir();
-        l[0].folhear(200);
+        l[0].folhear(400);
         System.out.println(l[0].detalhes());
 
-        l[1].abrir();
-        l[1].folhear(400);
-        System.out.println(l[1].detalhes());
+        // agora quando você tentar ultrapassar o limite de paginas, apareça uma mensagem falando que a pagina é invalida
     }
 }
