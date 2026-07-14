@@ -1,1 +1,1 @@
-Não aparece os detalhes do livro e leitor no terminal e não sei como resolver,como posso arrumar?
+agora quando você tentar ultrapassar o limite de paginas, apareça uma mensagem falando que a pagina é invalida

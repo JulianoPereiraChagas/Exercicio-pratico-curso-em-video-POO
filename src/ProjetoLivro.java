@@ -15,6 +15,5 @@ public class ProjetoLivro {
         l[0].folhear(400);
         System.out.println(l[0].detalhes());
 
-        // agora quando você tentar ultrapassar o limite de paginas, apareça uma mensagem falando que a pagina é invalida
     }
 }
