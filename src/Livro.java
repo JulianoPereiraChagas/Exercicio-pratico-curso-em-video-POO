@@ -101,6 +101,7 @@ public class Livro implements Publicacao {
 
     @Override
     public String detalhes() {
+        System.out.println("------------------------------");
         return "Título: " + this.titulo +
                 "\nAutor: " + this.autor +
                 "\nTotal de páginas: " + this.totPaginas +
