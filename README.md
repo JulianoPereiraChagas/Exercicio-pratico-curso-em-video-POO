@@ -1,0 +1,1 @@
+Não aparece os detalhes do livro e leitor no terminal e não sei como resolver,como posso arrumar?
