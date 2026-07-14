@@ -1,99 +1,58 @@
-public class Livro implements publicacao {
+public class Livro implements Publicacao {
+
     private String titulo;
     private String autor;
-    private String editora;
-    private int totalDePaginas;
-    private int paginaAtual;
+    private int totPaginas;
+    private int pagAtual;
     private boolean aberto;
-    public Pessoa leitor;
+    private Pessoa leitor;
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
+    public Livro(String titulo, String autor, int totPaginas, Pessoa leitor) {
         this.titulo = titulo;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
         this.autor = autor;
-    }
-
-    public String getEditora() {
-        return editora;
-    }
-
-    public void setEditora(String editora) {
-        this.editora = editora;
-    }
-
-    public int getTotalDePaginas() {
-        return totalDePaginas;
-    }
-
-    public void setTotalDePaginas(int totalDePaginas) {
-        this.totalDePaginas = totalDePaginas;
-    }
-
-    public int getPaginaAtual() {
-        return paginaAtual;
-    }
-
-    public void setPaginaAtual(int paginaAtual) {
-        this.paginaAtual = paginaAtual;
-    }
-
-    public boolean isAberto() {
-        return aberto;
-    }
-
-    public void setAberto(boolean aberto) {
-        this.aberto = aberto;
-    }
-
-    public Pessoa getLeitor() {
-        return leitor;
-    }
-
-    public void setLeitor(Pessoa leitor) {
+        this.totPaginas = totPaginas;
+        this.pagAtual = 0;
+        this.aberto = false;
         this.leitor = leitor;
     }
 
-    public Livro(Pessoa leitor, boolean aberto, int paginaAtual, int totalDePaginas, String editora, String autor, String titulo) {
-        this.leitor = leitor;
-        this.aberto = aberto;
-        this.paginaAtual = paginaAtual;
-        this.totalDePaginas = totalDePaginas;
-        this.editora = editora;
-        this.autor = autor;
-        this.titulo = titulo;
-    }
-
-    @Override
-    public String toString() {
+    public String detalhes() {
         return "Livro{" +
                 "titulo='" + titulo + '\'' +
                 ", autor='" + autor + '\'' +
-                ", editora='" + editora + '\'' +
-                ", totalDePaginas=" + totalDePaginas +
-                ", paginaAtual=" + paginaAtual +
+                ", totPaginas=" + totPaginas +
+                ", pagAtual=" + pagAtual +
                 ", aberto=" + aberto +
                 ", leitor=" + leitor +
                 '}';
     }
 
+    public String getTitulo() { return titulo; }
+    public void setTitulo(String titulo) { this.titulo = titulo; }
+
+    public String getAutor() { return autor; }
+    public void setAutor(String autor) { this.autor = autor; }
+
+    public int getTotPaginas() { return totPaginas; }
+    public void setTotPaginas(int totPaginas) { this.totPaginas = totPaginas; }
+
+    public int getPagAtual() { return pagAtual; }
+    public void setPagAtual(int pagAtual) { this.pagAtual = pagAtual; }
+
+    public boolean isAberto() { return aberto; }
+    public void setAberto(boolean aberto) { this.aberto = aberto; }
+
+    public Pessoa getLeitor() { return leitor; }
+    public void setLeitor(Pessoa leitor) { this.leitor = leitor; }
+
     @Override
     public void abrir() {
-
+        this.aberto = true;
     }
 
     @Override
     public void fechar() {
-
+        this.aberto = false;
     }
 
     @Override
@@ -119,5 +78,28 @@ public class Livro implements publicacao {
     @Override
     public void folhear(int quant, double valor) {
 
+    }
+
+    @Override
+    public void folhear(int p) {
+        if (p > this.totPaginas) {
+            this.pagAtual = this.totPaginas;
+        } else {
+            this.pagAtual = p;
+        }
+    }
+
+    @Override
+    public void avancarPag() {
+        if (this.pagAtual < this.totPaginas) {
+            this.pagAtual++;
+        }
+    }
+
+    @Override
+    public void voltarPag() {
+        if (this.pagAtual > 0) {
+            this.pagAtual--;
+        }
     }
 }
