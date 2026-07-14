@@ -77,7 +77,7 @@ public class Livro implements Publicacao {
     @Override
     public void folhear(int p) {
         if (p > this.totPaginas) {
-            this.pagAtual = this.totPaginas;
+            this.pagAtual = 0;
         } else if (p < 0) {
             this.pagAtual = 0;
         } else {
