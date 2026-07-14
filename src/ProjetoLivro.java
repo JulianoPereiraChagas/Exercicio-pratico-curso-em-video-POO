@@ -13,7 +13,10 @@ public class ProjetoLivro {
 
         l[0].abrir();
         l[0].folhear(200);
-
         System.out.println(l[0].detalhes());
+
+        l[1].abrir();
+        l[1].folhear(400);
+        System.out.println(l[1].detalhes());
     }
 }
